@@ -160,35 +160,64 @@ Automated database maintenance and health monitoring.
 
 ### Installation
 
-1. **Copy skills to your project:**
-   ```bash
-   # Clone this repository
-   git clone https://github.com/shaobaolu/claude-project-management-skills.git
+#### Option 1: Using Installation Script (Recommended)
 
-   # Copy skills to your project
-   mkdir -p your-project/.claude/skills
-   cp claude-project-management-skills/documentation-enforcer/SKILL.md \
-      your-project/.claude/skills/documentation-enforcer.md
-   cp claude-project-management-skills/code-structure-enforcer/SKILL.md \
-      your-project/.claude/skills/code-structure-enforcer.md
+```bash
+# Clone this repository
+git clone https://github.com/carrielabs/claude-project-management-skills.git
+cd claude-project-management-skills
+
+# Install all skills globally
+./install.sh --global --all
+
+# Or install specific skills
+./install.sh --global requirement-sync-manager test-case-sync-engine
+
+# Or install to project
+./install.sh --project documentation-enforcer
+```
+
+#### Option 2: Manual Installation
+
+**Install Single Skill:**
+```bash
+# Global installation (available in all projects)
+curl -o ~/.claude/skills/requirement-sync-manager.md \
+  https://raw.githubusercontent.com/carrielabs/claude-project-management-skills/main/skills/requirement-sync-manager/SKILL.md
+
+# Project installation (only in current project)
+mkdir -p .claude/skills
+curl -o .claude/skills/requirement-sync-manager.md \
+  https://raw.githubusercontent.com/carrielabs/claude-project-management-skills/main/skills/requirement-sync-manager/SKILL.md
+```
+
+**Install All Skills:**
+```bash
+# Clone and copy all
+git clone https://github.com/carrielabs/claude-project-management-skills.git
+cp claude-project-management-skills/skills/*/SKILL.md ~/.claude/skills/
+```
+
+### Setup
+
+1. **Create project documentation structure:**
+   ```bash
+   mkdir -p docs/{需求文档,架构设计,开发日志,测试文档,问题排查,项目管理}
+   touch docs/项目管理/{progress.md,task_plan.md,findings.md}
    ```
 
-2. **Create project documentation structure:**
+2. **Create test structure** (for testing skills):
    ```bash
-   cd your-project
-   mkdir -p docs/{架构设计,开发日志,测试文档,问题排查}
-   touch docs/{progress.md,task_plan.md,findings.md}
+   mkdir -p tests/{test-cases,test-engine,test-data,snapshots}
    ```
 
 3. **Add to your CLAUDE.md** (optional but recommended):
    ```markdown
    ## 📝 Documentation Rules
-
    See `.claude/skills/documentation-enforcer.md` for complete documentation standards.
 
-   ## 💾 Code Structure Rules
-
-   See `.claude/skills/code-structure-enforcer.md` for code organization standards.
+   ## 📋 Requirement Management
+   See `.claude/skills/requirement-sync-manager.md` for requirement sync rules.
    ```
 
 ### Usage
