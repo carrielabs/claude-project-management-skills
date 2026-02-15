@@ -29,7 +29,9 @@ A collection of Claude Code skills designed to maintain clean, organized, and pr
 
 ## 📦 Included Skills
 
-### 1. Documentation Enforcer
+### Core Skills (v1.0)
+
+#### 1. Documentation Enforcer v2
 Automatically manages project documentation with strict naming conventions and templates.
 
 **Features:**
@@ -38,6 +40,9 @@ Automatically manages project documentation with strict naming conventions and t
 - Provides standardized templates for different document types
 - Updates progress tracking at session end
 - Maintains cross-session memory through structured logs
+- **v2 New**: Prevents isolated document creation
+- **v2 New**: Forces document linking to main documents
+- **v2 New**: Automatic consistency checking
 
 **Use Cases:**
 - Long-term projects with daily development
@@ -45,7 +50,7 @@ Automatically manages project documentation with strict naming conventions and t
 - Projects requiring detailed change tracking
 - Non-technical stakeholders needing clear progress reports
 
-### 2. Code Structure Enforcer
+#### 2. Code Structure Enforcer
 Prevents code chaos by enforcing clear file naming and organization rules.
 
 **Features:**
@@ -60,6 +65,96 @@ Prevents code chaos by enforcing clear file naming and organization rules.
 - Experimental feature development
 - Legacy code migration
 - Projects with frequent algorithm changes
+
+---
+
+### Advanced Skills (v2.0) 🆕
+
+#### 3. Requirement Sync Manager
+Enforces Single Source of Truth for requirements - prevents PRD fragmentation.
+
+**Features:**
+- Detects requirement changes automatically
+- Forces updates to PRD-主文档.md (main PRD document)
+- Creates change records with version history
+- Notifies test-case-sync-engine automatically
+- Prevents isolated requirement documents
+
+**Use Cases:**
+- Projects with evolving requirements
+- Bug fixes that change original behavior
+- Feature additions and modifications
+- Teams struggling with scattered requirement docs
+
+**Why You Need This:**
+- Prevents "requirement document chaos" where changes are recorded in random files
+- Ensures all team members see the same requirements
+- Automatically links requirements to test cases
+
+#### 4. Test Case Sync Engine
+Automatically generates and syncs test cases based on requirement changes.
+
+**Features:**
+- Three-layer test case generation:
+  - Layer 1: PRD-based initial test cases
+  - Layer 2: Code-change-based regression tests
+  - Layer 3: Bug-fix-based defensive tests
+- Automatic linking to PRD requirements
+- Maintains test-cases-master.json
+- Supports parallel test execution
+
+**Use Cases:**
+- Projects with 40+ manual test scripts
+- Teams struggling with test case maintenance
+- Requirement changes that need immediate test coverage
+- Automated testing pipelines
+
+**Why You Need This:**
+- Eliminates manual test case creation
+- Ensures every requirement has corresponding tests
+- Automatically updates tests when requirements change
+
+#### 5. Test Automation Engine
+Intelligent test automation engine that replaces manual test scripts.
+
+**Features:**
+- Smart test identification based on code changes
+- Parallel test execution (configurable max workers)
+- Automatic report generation with performance comparison
+- Retry logic for flaky tests (AI extraction, network calls)
+- Snapshot-based performance tracking
+
+**Use Cases:**
+- Projects with 40+ individual test scripts
+- Teams needing faster test execution
+- CI/CD pipelines requiring intelligent test selection
+- Performance regression detection
+
+**Why You Need This:**
+- Replaces 40+ scripts with unified engine
+- Runs only relevant tests based on code changes
+- Automatic performance comparison with baselines
+
+#### 6. Database Health Monitor
+Automated database maintenance and health monitoring.
+
+**Features:**
+- Weekly automatic health checks
+- Automatic cleanup of 30-day-old records
+- Performance monitoring and alerts
+- Integration with existing maintenance scripts
+- Scheduled execution support
+
+**Use Cases:**
+- Projects with growing database records
+- Teams forgetting to run maintenance scripts
+- Production databases needing regular cleanup
+- Performance degradation prevention
+
+**Why You Need This:**
+- Prevents database bloat automatically
+- No more manual maintenance reminders
+- Catches performance issues early
 
 ## 🚀 Quick Start
 
