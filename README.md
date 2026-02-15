@@ -1,0 +1,272 @@
+# Claude Project Management Skills
+
+> Professional documentation and code structure enforcement skills for Claude Code
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Claude Code](https://img.shields.io/badge/Claude-Code-blue.svg)](https://github.com/anthropics/claude-code)
+
+## 📖 Overview
+
+A collection of Claude Code skills designed to maintain clean, organized, and professional project structures across development sessions. These skills automatically enforce documentation standards and code organization rules, preventing the chaos that often occurs when working with AI assistants across multiple sessions.
+
+## 🎯 Problems These Skills Solve
+
+### Without These Skills
+- 📄 Documentation scattered everywhere with inconsistent naming
+- 🗂️ Can't find yesterday's work log or test results
+- 💾 Old code files mixed with new implementations
+- 🔄 Each AI session creates documents differently
+- ❌ Accidentally modifying deprecated code
+- 📅 No clear version history or change tracking
+
+### With These Skills
+- ✅ Automatic daily work logs with standardized naming (`YYYY-MM-DD-work-log.md`)
+- ✅ Clear separation of active, deprecated, and experimental code
+- ✅ Consistent documentation structure across all sessions
+- ✅ Automatic session start/end procedures
+- ✅ Prevention of accidental modifications to old code
+- ✅ Complete change tracking and decision records
+
+## 📦 Included Skills
+
+### 1. Documentation Enforcer
+Automatically manages project documentation with strict naming conventions and templates.
+
+**Features:**
+- Auto-creates daily work logs at session start
+- Enforces `YYYY-MM-DD-description.md` naming format
+- Provides standardized templates for different document types
+- Updates progress tracking at session end
+- Maintains cross-session memory through structured logs
+
+**Use Cases:**
+- Long-term projects with daily development
+- Teams using multiple AI tools (Claude, Cursor, etc.)
+- Projects requiring detailed change tracking
+- Non-technical stakeholders needing clear progress reports
+
+### 2. Code Structure Enforcer
+Prevents code chaos by enforcing clear file naming and organization rules.
+
+**Features:**
+- Clear naming conventions for active/deprecated/experimental code
+- Automatic deprecation workflow with reason tracking
+- Prevention of accidental old code modifications
+- Version management for A/B testing scenarios
+- Standardized file header comments
+
+**Use Cases:**
+- Refactoring projects with multiple implementation attempts
+- Experimental feature development
+- Legacy code migration
+- Projects with frequent algorithm changes
+
+## 🚀 Quick Start
+
+### Installation
+
+1. **Copy skills to your project:**
+   ```bash
+   # Clone this repository
+   git clone https://github.com/shaobaolu/claude-project-management-skills.git
+
+   # Copy skills to your project
+   mkdir -p your-project/.claude/skills
+   cp claude-project-management-skills/documentation-enforcer/SKILL.md \
+      your-project/.claude/skills/documentation-enforcer.md
+   cp claude-project-management-skills/code-structure-enforcer/SKILL.md \
+      your-project/.claude/skills/code-structure-enforcer.md
+   ```
+
+2. **Create project documentation structure:**
+   ```bash
+   cd your-project
+   mkdir -p docs/{架构设计,开发日志,测试文档,问题排查}
+   touch docs/{progress.md,task_plan.md,findings.md}
+   ```
+
+3. **Add to your CLAUDE.md** (optional but recommended):
+   ```markdown
+   ## 📝 Documentation Rules
+
+   See `.claude/skills/documentation-enforcer.md` for complete documentation standards.
+
+   ## 💾 Code Structure Rules
+
+   See `.claude/skills/code-structure-enforcer.md` for code organization standards.
+   ```
+
+### Usage
+
+Once installed, these skills work automatically:
+
+**At Session Start:**
+- Claude reads your project context
+- Checks if today's work log exists
+- Creates it if missing
+- Asks for today's goals
+
+**During Development:**
+- Enforces naming conventions for new documents
+- Prevents modification of deprecated code
+- Guides proper file organization
+
+**At Session End:**
+- Updates today's work log
+- Updates progress tracking
+- Records important findings
+- Plans next steps
+
+## 📋 Documentation Structure
+
+After installation, your `docs/` folder will follow this structure:
+
+```
+docs/
+├── 架构设计/              # Architecture & Design
+│   ├── system-design-v2.0.md
+│   └── ADR-001-matching-algorithm.md
+├── 开发日志/              # Development Logs
+│   ├── 2026-02-15-work-log.md
+│   ├── 2026-02-14-work-log.md
+│   └── 2026-02.md         # Monthly changelog
+├── 测试文档/              # Test Documentation
+│   ├── 2026-02-15-algorithm-test.md
+│   └── 2026-02-14-e2e-test.md
+├── 问题排查/              # Troubleshooting
+│   ├── scoring-issue-2026-02-14.md
+│   └── api-error-analysis-2026-02-15.md
+├── progress.md            # Session history (newest first)
+├── task_plan.md           # Task tracking
+└── findings.md            # Problems & solutions
+```
+
+## 💾 Code Structure
+
+Your code will be organized with clear version indicators:
+
+```
+lib/
+├── matching/
+│   ├── matcher.ts                    # ✅ Current active
+│   ├── score_calculator.ts           # ✅ Current active
+│   ├── _experimental_ai_matcher.ts   # 🧪 Testing
+│   └── _deprecated/                  # 🗑️ Old code
+│       ├── README.md                 # Deprecation reasons
+│       └── _deprecated_2026-02-15_old_matcher.ts
+```
+
+## 📚 Examples
+
+### Example 1: Daily Work Log
+
+```markdown
+# 2026-02-15 Work Log
+
+**Date**: 2026-02-15
+**Session Time**: 09:00 - 12:00
+
+## 📋 Today's Goals
+- [x] Refactor matching algorithm
+- [x] Add unit tests
+- [ ] Deploy to staging
+
+## ✅ Completed Work
+
+### 1. Refactored Matching Algorithm
+**Time**: 09:00 - 11:00
+**Description**: Improved accuracy from 85% to 95%
+**Modified Files**:
+- `lib/matching/matcher.ts` - Complete rewrite
+- `lib/matching/score_calculator.ts` - Updated scoring logic
+
+## 🧪 Test Results
+- Unit tests: ✅ 45/45 passed
+- Integration tests: ✅ 12/12 passed
+
+## 🐛 Issues Encountered
+None
+
+## 📝 Tomorrow's Plan
+- [ ] Deploy to staging
+- [ ] Monitor performance metrics
+```
+
+### Example 2: Deprecating Old Code
+
+```bash
+# Old matcher is being replaced
+mv lib/matching/old_matcher.ts \
+   lib/matching/_deprecated/_deprecated_2026-02-15_old_matcher.ts
+
+# Document why it was deprecated
+echo "## _deprecated_2026-02-15_old_matcher.ts
+**Deprecated**: 2026-02-15
+**Reason**: Accuracy only 85%, new version achieves 95%
+**Replacement**: matcher.ts
+**Docs**: docs/架构设计/ADR-005-matching-refactor.md" \
+> lib/matching/_deprecated/README.md
+```
+
+## 🎨 Customization
+
+### Adapting to Your Language
+
+The default folder names are in Chinese. To use English:
+
+1. Edit the skill files:
+   ```bash
+   # In documentation-enforcer.md, replace:
+   docs/开发日志/ → docs/dev-logs/
+   docs/架构设计/ → docs/architecture/
+   docs/测试文档/ → docs/tests/
+   docs/问题排查/ → docs/troubleshooting/
+   ```
+
+2. Update your folder structure accordingly
+
+### Adapting to Your Workflow
+
+Both skills are highly customizable. Edit the `.md` files to:
+- Change naming conventions
+- Modify templates
+- Add/remove document types
+- Adjust automation rules
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+### Development Setup
+
+1. Fork this repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Test your changes in a real project
+4. Commit your changes (`git commit -m 'Add amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Inspired by real-world pain points in long-term AI-assisted development
+- Built for the [Claude Code](https://github.com/anthropics/claude-code) ecosystem
+- Thanks to the Anthropic team for creating such a powerful tool
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/shaobaolu/claude-project-management-skills/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/shaobaolu/claude-project-management-skills/discussions)
+
+## 🔗 Related Resources
+
+- [Claude Code Documentation](https://github.com/anthropics/claude-code)
+- [Anthropic Skills Repository](https://github.com/anthropics/skills)
+- [Awesome Claude Skills](https://github.com/ComposioHQ/awesome-claude-skills)
+
+---
+
+**Made with ❤️ for developers tired of documentation chaos**

@@ -1,0 +1,100 @@
+# Example CLAUDE.md
+
+> Example project rules file that integrates these skills
+
+## 📝 Documentation Rules
+
+This project uses the **Documentation Enforcer** skill for consistent documentation.
+
+**Key Points:**
+- Daily work logs are auto-created at session start
+- All documents follow `YYYY-MM-DD-description.md` naming
+- Session progress is tracked in `docs/progress.md`
+- Important findings go in `docs/findings.md`
+
+**Full Documentation**: See `.claude/skills/documentation-enforcer.md`
+
+---
+
+## 💾 Code Structure Rules
+
+This project uses the **Code Structure Enforcer** skill for clean code organization.
+
+**Key Points:**
+- Active code: `feature.ts`
+- Deprecated code: `_deprecated_YYYY-MM-DD_feature.ts` (in `_deprecated/` folder)
+- Experimental code: `_experimental_feature.ts`
+- Never modify code in `_deprecated/` folders
+
+**Full Documentation**: See `.claude/skills/code-structure-enforcer.md`
+
+---
+
+## 🎯 Core Principles
+
+### 1. Prevent Catastrophic Changes
+- **Isolate changes**: Create new branch before modifications
+- **Test protection**: Write tests before modifying core code
+- **Rollback ready**: Keep Git history clean
+
+### 2. Cross-Session Memory
+- **Persistent context**: Record important decisions in `docs/findings.md`
+- **Task tracking**: Use `docs/task_plan.md` to track task status
+- **Session logs**: Update `docs/progress.md` at session end
+
+### 3. Standardized Workflow
+- Requirement clarification → Impact analysis → Design → User confirmation → Development → Testing → Deployment → Monitoring
+
+---
+
+## 🚫 Forbidden Operations
+
+### Absolutely Forbidden
+1. ❌ **Directly modify core code without tests**
+2. ❌ **Modify code on main branch directly**
+3. ❌ **Modify code without recording reason**
+4. ❌ **Cross-module changes without impact analysis**
+5. ❌ **Modify without running tests**
+
+---
+
+## 📚 Documentation Structure
+
+```
+docs/
+├── README.md                # Documentation navigation
+├── architecture/            # Architecture & design
+├── dev-logs/               # Daily work logs
+├── tests/                  # Test documentation
+├── troubleshooting/        # Problem analysis
+├── findings.md             # Problems & solutions
+├── progress.md             # Session history
+└── task_plan.md            # Task tracking
+```
+
+---
+
+## 💾 Code Structure
+
+```
+lib/
+├── core/
+│   ├── feature.ts          # ✅ Active
+│   ├── _experimental_new_feature.ts  # 🧪 Testing
+│   └── _deprecated/        # 🗑️ Old code
+│       ├── README.md
+│       └── _deprecated_2026-02-15_old_feature.ts
+```
+
+---
+
+## 🔄 Version History
+
+- **v1.0** (2026-02-15): Initial version
+  - Integrated Documentation Enforcer skill
+  - Integrated Code Structure Enforcer skill
+  - Established core principles
+
+---
+
+**Note**: This file is the project's "constitution". All AI assistants and developers must follow these rules.
